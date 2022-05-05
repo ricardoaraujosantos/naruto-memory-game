@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.light-mode{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    height: 100%;
+    width: 100%;
+    background-color: #f8f4ef;
+}
+
+.user-panel-wrapper{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 8px 14px;
+    background-color: #ff4c05;
+}
+
+.cards-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
