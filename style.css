@@ -29,3 +29,48 @@
     margin: 20px 0;
     flex-wrap: wrap;
 }
+
+.my-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 240px;
+    width: 160px;
+
+    background-color: transparent;
+    margin: 10px;
+   
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 1.5s;
+   
+}
+
+.front, .back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute; 
+    border-radius: 10px;
+   
+}
+
+.card-virar{
+    transform: rotateY(180deg);
+}
+
+
+.front{
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+}
+
+.back{
+    transform: rotateY(360deg);
+} 
+
+
+
+
