@@ -14,9 +14,46 @@
     background-color: #f8f4ef;
 }
 
+.dark-mode{
+    background: url('imagens/anbu.jpg');
+    z-index: -1;
+}
+
+.write-name{
+    font-weight: bolder;
+}
+
+.score{
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #134485;
+}
+
+.img-kunai{
+    width: 30px;
+    height: 30px;
+}
+
+.spinner-img{
+    animation: spinnerKunai 0.8s linear;
+}
+
+@keyframes spinnerKunai {
+    to{transform: rotate(360deg);}
+}
+
+.btn-name{
+    font-weight: bolder;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #0a0a0a;
+    cursor: pointer;
+}
+
 .user-panel-wrapper{
     display: flex;
     align-items: center;
+    justify-content: space-around;
     margin: 10px 0;
     padding: 8px 14px;
     background-color: #ff4c05;
@@ -28,6 +65,7 @@
     align-items: center;
     margin: 20px 0;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 
 .my-card{
