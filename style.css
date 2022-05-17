@@ -27,19 +27,34 @@
     display: flex;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #134485;
+    width: 200px;
+}
+.score h2{
+    margin-right: 8px;
+}
+
+.life{
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #134485;
+    width: 200px;
+}
+
+.life-damage{
+    opacity: 0.4;
+    animation: spinnerKunai 0.8s linear;
+}
+@keyframes spinnerKunai {
+    to{transform: rotate(360deg);}
+}
+
+.life h2{
+    margin-right: 8px;
 }
 
 .img-kunai{
     width: 30px;
     height: 30px;
-}
-
-.spinner-img{
-    animation: spinnerKunai 0.8s linear;
-}
-
-@keyframes spinnerKunai {
-    to{transform: rotate(360deg);}
 }
 
 .btn-name{
@@ -48,6 +63,10 @@
     border: none;
     border-bottom: 1px solid #0a0a0a;
     cursor: pointer;
+}
+
+.game-over{
+    color: #f8f4ef;
 }
 
 .user-panel-wrapper{

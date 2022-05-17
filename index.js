@@ -83,12 +83,26 @@ function checkMatchingCards() {
 
 function desableCards() {
     block = true;
+    createDamage();
     setTimeout(() => {
         firstCard.classList.remove('card-virar');
         secondCard.classList.remove('card-virar');
-        [firstCard, secondCard, block]= [null, null, false]
-    }, 3000)
+        if(gameOver !== 0) [firstCard, secondCard, block]= [null, null, false]
+       
+    }, 2000)
+
 }
+
+let gameOver = 4;
+
+function createDamage(){
+    if(gameOver === 0) block= true; 
+    gameOver--;
+    const remove = document.getElementById('myLife');
+    remove.removeChild(document.getElementsByClassName('life-img')[0]);
+}
+
+
 
 const myScore = document.getElementById('myScore');
 let score = 0;
@@ -99,5 +113,6 @@ function scoreAndClearEvent(){
     firstCard.removeEventListener('click', rotateCard);
     secondCard.removeEventListener('click', rotateCard);
     [firstCard, secondCard, block]= [null, null, false];
-    
 }
+
+// Next step Game Over
