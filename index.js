@@ -45,7 +45,7 @@ imgcards.forEach(img => {
     `
 })
 
-const cardsWrapper = document.getElementById('cardsWrapper');
+let cardsWrapper = document.getElementById('cardsWrapper');
 cardsWrapper.innerHTML = cardsHtml + cardsHtml;
 
 let cards = document.querySelectorAll('.my-card');
@@ -83,26 +83,24 @@ function checkMatchingCards() {
 
 function desableCards() {
     block = true;
-    createDamage();
     setTimeout(() => {
+        createDamage();
         firstCard.classList.remove('card-virar');
         secondCard.classList.remove('card-virar');
-        if(gameOver !== 0) [firstCard, secondCard, block]= [null, null, false]
+        if(lifes !== 0) [firstCard, secondCard, block]= [null, null, false]
        
     }, 2000)
-
 }
 
-let gameOver = 4;
+let lifes = 4;
+let gameOverHtml = document.querySelector('.game-over')
 
 function createDamage(){
-    if(gameOver === 0) block= true; 
-    gameOver--;
+    lifes--;
+    if(lifes === 0) gameOverHtml.classList.remove("z-index")
     const remove = document.getElementById('myLife');
     remove.removeChild(document.getElementsByClassName('life-img')[0]);
 }
-
-
 
 const myScore = document.getElementById('myScore');
 let score = 0;
@@ -115,4 +113,6 @@ function scoreAndClearEvent(){
     [firstCard, secondCard, block]= [null, null, false];
 }
 
-// Next step Game Over
+// Next step restart game
+//let btnJogar = document.getElementById('btnJogar');
+//btnJogar.addEventListener('click', createFunction());
