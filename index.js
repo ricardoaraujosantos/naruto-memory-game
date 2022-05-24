@@ -1,12 +1,17 @@
 let btnMyName = document.getElementById('btnMyName');
 let inputWriteName = document.getElementById('writeMyName');
+let block = false;
 
 //Define nome e salva no localstorage
 
+btnMyName.addEventListener('click', definesName);
+
 function definesName() { 
+   
     let promptName = prompt('Por favor, Digite seu nome!');
     localStorage.setItem('Name', promptName);
     let nameSaved = localStorage.getItem('Name');
+  
     
     if(!localStorage.getItem('Name') || !promptName){
         definesName();
@@ -21,12 +26,12 @@ function definesName() {
 window.addEventListener('load', function() {
     let localStorageName = localStorage.getItem('Name');
     if(localStorageName !== null){
-        inputWriteName.innerHTML = 'Olá, Bem Vindo ';
-        btnMyName.innerHTML = 'Entrar com seu nome? click aqui!'
+        inputWriteName.innerHTML = 'Olá, Bem Vindo ' + localStorageName;
+        btnMyName.innerHTML = `Não é ${localStorageName}? Click!`
     }
 });
 
-btnMyName.addEventListener('click', definesName);
+//Array de imagens
 
 const imgcards= [
     'gaara.jpg',
@@ -50,22 +55,32 @@ imgcards.forEach(img => {
     `
 })
 
+//Adicinar cards na div
+
 let cardsWrapper = document.getElementById('cardsWrapper');
 cardsWrapper.innerHTML = cardsHtml + cardsHtml;
 
+//Selecionando todos os cards e adicionando evento
+
+let cards = document.querySelectorAll('.my-card');
+cards.forEach(elemCard => elemCard.addEventListener('click', rotateCard));
+
 //Inicia o jogo
 
-const start = document.querySelector('.start-wrapper');
+const startWrapper = document.querySelector('.start-wrapper');
+const start = document.getElementById('start')
 start.addEventListener('click', startGame);
 
 function startGame() {
-   start.classList.add('z-index');
+   startWrapper.classList.add('z-index');
    cardsWrapper.classList.remove('z-index')
+   block= true;
 
    cards.forEach(elem => {
     elem.classList.add('card-virar');
     setTimeout(()=> {  
         elem.classList.remove('card-virar'); 
+        block= false;
     }, 5000)
 })
 }
@@ -80,12 +95,11 @@ function shuffleCards() {
   };
  shuffleCards();
 
-//Selecionando todos os cards e adicionando evento
 
-let cards = document.querySelectorAll('.my-card');
-cards.forEach(elemCard => elemCard.addEventListener('click', rotateCard));
+
+
 let firstCard, secondCard;
-let block = false;
+
 
 //Adicionando rotação aos cards
 
@@ -130,11 +144,18 @@ let score = 0;
 
 function scoreAndClearEvent(){
     myScore.innerHTML = `PONTOS ${score += 100}`;
+    if(score > 600)gameWin();
 
     firstCard.removeEventListener('click', rotateCard);
     secondCard.removeEventListener('click', rotateCard);
     [firstCard, secondCard, block]= [null, null, false];
 }
+
+//Next creating
+
+// function gameWin() { 
+//     console.log('chamou gameWin')
+// }
 
 //Criando danos
 
@@ -159,6 +180,7 @@ btnJogar.addEventListener('click', restartGame);
 let lifesHtml = "";
 
 function restartGame() {
+    block= true;
     gameOverHtml.classList.add("z-index");
 
     for (let i = 0; i <= 3; i++) {
@@ -177,11 +199,12 @@ function restartGame() {
         setTimeout(()=> {  
             elem.classList.remove('card-virar');
             elem.addEventListener('click', rotateCard);  
+            block= false;
         }, 5000)
     })
 
     myLife.innerHTML = `VIDAS ${lifesHtml}`; 
-    [score, firstCard, secondCard, block]= [0, null, null, false]
+    [score, firstCard, secondCard]= [0, null, null]
     myScore.innerHTML = `PONTOS 0${score}`;
     cardsWrapper.classList.remove("z-index");
 };
