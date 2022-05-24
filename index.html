@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naruto Memory Game</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <section id="mainSection" class="light-mode dark-mode">
@@ -15,7 +16,7 @@
                 <button id="btnMyName" class="btn-name">Adicionar Nome</button> 
             </div>
             <div class="life" id="myLife">
-                <h2>Vidas:</h2>
+                <h2>VIDAS</h2>
                 <div class="life-img">
                     <img class="img-kunai " src="imagens/kunai.png" alt="icone kunai">
                 </div>
@@ -30,16 +31,19 @@
                 </div>
             </div>
             <div class="score">
-                <h2 id="myScore" >Pontos: 00</h2>
+                <h2 id="myScore" >PONTOS 00</h2>
             </div>
         </div>
-
-        <div id="cardsWrapper" class="cards-wrapper"> </div>
+        <div class="start-wrapper">
+            <button id="start" class="btn-comecar-jogar">COMEÇAR</button>
+        </div>
+      
+        <div id="cardsWrapper" class="cards-wrapper z-index"></div>
         
     </section>
     <div class="game-over-wrapper">
         <div class= "game-over z-index">
-            <button id="btnJogar">JOGAR</button>
+            <button id="btnJogar" class="btn-comecar-jogar">JOGAR</button>
         </div>
         </div>
      

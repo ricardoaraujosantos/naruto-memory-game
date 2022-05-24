@@ -1,7 +1,9 @@
 let btnMyName = document.getElementById('btnMyName');
 let inputWriteName = document.getElementById('writeMyName');
 
-function definesName() {
+//Define nome e salva no localstorage
+
+function definesName() { 
     let promptName = prompt('Por favor, Digite seu nome!');
     localStorage.setItem('Name', promptName);
     let nameSaved = localStorage.getItem('Name');
@@ -14,11 +16,13 @@ function definesName() {
     }
 }
 
+//Quando a pagina carregar Verificar se existe valor salvo no localstorage
+
 window.addEventListener('load', function() {
     let localStorageName = localStorage.getItem('Name');
     if(localStorageName !== null){
-        inputWriteName.innerHTML = 'Olá, Bem Vindo ' + localStorageName;
-        btnMyName.innerHTML = `Não é ${localStorageName}? Click!`
+        inputWriteName.innerHTML = 'Olá, Bem Vindo ';
+        btnMyName.innerHTML = 'Entrar com seu nome? click aqui!'
     }
 });
 
@@ -34,8 +38,9 @@ const imgcards= [
     'susake.jpg'
 ];
 
-let cardsHtml = '';
+//Criar cards dinamico
 
+let cardsHtml = '';
 imgcards.forEach(img => {
     cardsHtml += `
         <div id= "card" class= "my-card" data-card= "${img}">
@@ -48,8 +53,24 @@ imgcards.forEach(img => {
 let cardsWrapper = document.getElementById('cardsWrapper');
 cardsWrapper.innerHTML = cardsHtml + cardsHtml;
 
-let cards = document.querySelectorAll('.my-card');
-cards.forEach(elemCard => elemCard.addEventListener('click', rotateCard));
+//Inicia o jogo
+
+const start = document.querySelector('.start-wrapper');
+start.addEventListener('click', startGame);
+
+function startGame() {
+   start.classList.add('z-index');
+   cardsWrapper.classList.remove('z-index')
+
+   cards.forEach(elem => {
+    elem.classList.add('card-virar');
+    setTimeout(()=> {  
+        elem.classList.remove('card-virar'); 
+    }, 5000)
+})
+}
+
+//Embaralha os cards
 
 function shuffleCards() {
     cards.forEach(card => {
@@ -59,8 +80,14 @@ function shuffleCards() {
   };
  shuffleCards();
 
+//Selecionando todos os cards e adicionando evento
+
+let cards = document.querySelectorAll('.my-card');
+cards.forEach(elemCard => elemCard.addEventListener('click', rotateCard));
 let firstCard, secondCard;
 let block = false;
+
+//Adicionando rotação aos cards
 
 function rotateCard() {
    if(block) return false;
@@ -76,10 +103,14 @@ function rotateCard() {
    checkMatchingCards();
 };
 
+//Verifica se os cards são iguais
+
 function checkMatchingCards() {
     const sameCards = firstCard.getAttribute('data-card') === secondCard.getAttribute('data-card');
     !sameCards ? desableCards() : scoreAndClearEvent(); 
 }
+
+//Remove class reatribui cards
 
 function desableCards() {
     block = true;
@@ -92,27 +123,66 @@ function desableCards() {
     }, 2000)
 }
 
-let lifes = 4;
-let gameOverHtml = document.querySelector('.game-over')
-
-function createDamage(){
-    lifes--;
-    if(lifes === 0) gameOverHtml.classList.remove("z-index")
-    const remove = document.getElementById('myLife');
-    remove.removeChild(document.getElementsByClassName('life-img')[0]);
-}
+//Incrementa pontos, remove evento e reatribui os cards
 
 const myScore = document.getElementById('myScore');
 let score = 0;
 
 function scoreAndClearEvent(){
-    myScore.innerHTML = `Score: ${score += 100}`;
+    myScore.innerHTML = `PONTOS ${score += 100}`;
 
     firstCard.removeEventListener('click', rotateCard);
     secondCard.removeEventListener('click', rotateCard);
     [firstCard, secondCard, block]= [null, null, false];
 }
 
-// Next step restart game
-//let btnJogar = document.getElementById('btnJogar');
-//btnJogar.addEventListener('click', createFunction());
+//Criando danos
+
+let gameOverHtml = document.querySelector('.game-over');
+const myLife = document.getElementById('myLife');
+let lifes = 4;
+
+function createDamage(){
+    lifes--;
+    if(lifes === 0) {
+        gameOverHtml.classList.remove("z-index");
+        cardsWrapper.classList.add('z-index');
+        shuffleCards();
+    }
+    myLife.removeChild(document.getElementsByClassName('life-img')[0]);
+}
+
+//Reiniciando o jogo
+
+let btnJogar = document.getElementById('btnJogar');
+btnJogar.addEventListener('click', restartGame);
+let lifesHtml = "";
+
+function restartGame() {
+    gameOverHtml.classList.add("z-index");
+
+    for (let i = 0; i <= 3; i++) {
+        if(lifes < 1) lifesHtml = "";
+       
+        lifes++;
+        lifesHtml += `
+            <div class="life-img">
+                <img class="img-kunai " src="imagens/kunai.png" alt="icone kunai">
+            </div>
+        `    
+    }
+   
+    cards.forEach(elem => {
+        elem.classList.add('card-virar');
+        setTimeout(()=> {  
+            elem.classList.remove('card-virar');
+            elem.addEventListener('click', rotateCard);  
+        }, 5000)
+    })
+
+    myLife.innerHTML = `VIDAS ${lifesHtml}`; 
+    [score, firstCard, secondCard, block]= [0, null, null, false]
+    myScore.innerHTML = `PONTOS 0${score}`;
+    cardsWrapper.classList.remove("z-index");
+};
+

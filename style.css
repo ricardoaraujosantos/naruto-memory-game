@@ -2,7 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
 }
+
+
 
 .light-mode{
     display: flex;
@@ -36,7 +40,7 @@
 
 .life{
     display: flex;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
     color:  #641E16;
     width: 200px;
 }
@@ -60,6 +64,7 @@
 
 .btn-name{
     font-weight: bolder;
+    font-size: 12px;
     background-color: transparent;
     color: #4A235A;
     border: none;
@@ -88,7 +93,19 @@
     margin: 10px 0;
 }
 
-.game-over button{
+.start-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 550px;
+    width: 100%;
+    top: 75px;
+    background: url(imagens/naruto-sasuke.jpg) no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+
+.btn-comecar-jogar{
     font-family: cursive;
     width: 300px;
     height: 45px;
@@ -102,7 +119,7 @@
     opacity: 0.8;
 }
 
-.game-over button:hover{
+.btn-comecar-jogar:hover{
     opacity: 1;
 }
 
