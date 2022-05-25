@@ -95,13 +95,9 @@ function shuffleCards() {
   };
  shuffleCards();
 
-
-
+//Adicionando rotação aos cards
 
 let firstCard, secondCard;
-
-
-//Adicionando rotação aos cards
 
 function rotateCard() {
    if(block) return false;
@@ -122,7 +118,12 @@ function rotateCard() {
 function checkMatchingCards() {
     const sameCards = firstCard.getAttribute('data-card') === secondCard.getAttribute('data-card');
     !sameCards ? desableCards() : scoreAndClearEvent(); 
+    if(sameCards){
+        let jutsu = new Audio('sonds/jutsu.mp3');
+        jutsu.play();
+    }
 }
+    
 
 //Remove class reatribui cards
 
@@ -151,12 +152,6 @@ function scoreAndClearEvent(){
     [firstCard, secondCard, block]= [null, null, false];
 }
 
-//Next creating
-
-// function gameWin() { 
-//     console.log('chamou gameWin')
-// }
-
 //Criando danos
 
 let gameOverHtml = document.querySelector('.game-over');
@@ -182,6 +177,7 @@ let lifesHtml = "";
 function restartGame() {
     block= true;
     gameOverHtml.classList.add("z-index");
+    winWrapper.classList.add('z-index');
 
     for (let i = 0; i <= 3; i++) {
         if(lifes < 1) lifesHtml = "";
@@ -209,3 +205,23 @@ function restartGame() {
     cardsWrapper.classList.remove("z-index");
 };
 
+//Vitoria no jogo continuar jogando
+
+const winWrapper = document.querySelector('.win-wrapper');
+let btnWin = document.getElementById('btnWin');
+btnWin.addEventListener('click', function(){
+    lifesHtml= "";
+    restartGame();
+})
+
+function gameWin() { 
+    if(score > 600){
+        let winJutsu = new Audio('sonds/clone-jutsu.mp3');
+        winJutsu.play(); 
+        setTimeout(() => {
+            winWrapper.classList.remove('z-index');
+            cardsWrapper.classList.add('z-index')
+        }, 3000)
+    }
+}
+gameWin();

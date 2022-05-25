@@ -111,6 +111,27 @@
     align-items: center;
 }
 
+.win-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 550px;
+    width: 100%;
+    top: 75px;
+    background: linear-gradient(rgba(0,0,0,.40), rgba(0,0,0,.40) 100%),
+                url(imagens/naruto-win.jpg) no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    position: absolute;
+}
+
+.win-wrapper p{
+    color: #f8f4ef;
+    line-height: 20px;
+    text-align: left;
+    font-size: 14px;
+}
+
 .game-over{
     display: flex;
     align-items: center;
