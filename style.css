@@ -63,7 +63,6 @@
 }
 
 .btn-name{
-   
     font-weight: bolder;
     font-size: 12px;
     background-color: transparent;
@@ -189,7 +188,6 @@
     position: relative;
     transform-style: preserve-3d;
     transition: all 1.5s;
-   
 }
 
 .front, .back{
@@ -200,13 +198,11 @@
     height: 100%;
     position: absolute; 
     border-radius: 10px;
-   
 }
 
 .card-virar{
     transform: rotateY(180deg);
 }
-
 
 .front{
     transform: rotateY(-180deg);
