@@ -1,6 +1,6 @@
 # naruto-memory-game
 
-[![NPM](https://github.com/ricardoaraujosantos/naruto-memory-game/blob/main/LICENCE)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/ricardoaraujosantos/naruto-memory-game/blob/main/LICENCE)
 
 # Sobre o projeto
 
@@ -24,18 +24,18 @@ A aplicação consiste em um jogo de memoria, onde o usuario tem cinco segundos 
 - HTML 
 - CSS
 - JAVASCRIPT
-- 
+
 # Como executar o projeto
 
 ## Front end web
 Pré-requisitos:
 
-```No prompt de comando bash
+No prompt de comando bash
 # clonar repositório
 git clone "Codigo copiado"
 # entrar na pasta do projeto 
 cd "Nome da pasta"
-```
+
 
 # Autor
 Ricardo Araujo dos Santos
