@@ -214,12 +214,23 @@
 } 
 
 @media screen and (max-width: 780px) {
-    .user.user-panel-wrapper{
-        display: flex;
-        flex-direction: column;
-        font-size: 10px;
-        height: auto;
+    .start-wrapper{
+        top: 135px;
+        background-size: contain ;
     }
+
+    .game-over{
+        top: 95px;
+    }
+
+    .game-over h2{
+        text-align: center;
+    }
+
+    .win-wrapper{
+        top: 85px;
+    }
+
     .life h2, .score h2, .user h1{
         font-size: 14px;
         margin-left: 6px;
@@ -230,12 +241,10 @@
         font-size: 12px;
         text-align: left;
         margin-left: 6px;
-       
     }
   
     .img-kunai{
         width: 28px;
         height: 28px;
     }
-
 }
