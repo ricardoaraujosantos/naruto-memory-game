@@ -219,6 +219,7 @@ function gameWin() {
         let winJutsu = new Audio('sonds/clone-jutsu.mp3');
         winJutsu.play(); 
         setTimeout(() => {
+            shuffleCards();
             winWrapper.classList.remove('z-index');
             cardsWrapper.classList.add('z-index')
         }, 3000)
