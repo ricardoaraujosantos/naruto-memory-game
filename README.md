@@ -31,14 +31,14 @@ A aplicação consiste em um jogo de memoria, onde o usuario tem cinco segundos 
 Pré-requisitos:
 
 
-# clonar repositório
+## clonar repositório
 No prompt de comando bash
 git clone "Codigo copiado"
 
-# entrar na pasta do projeto 
+## entrar na pasta do projeto 
 cd "Nome da pasta"
 
 
-# Autor
+## Autor
 Ricardo Araujo dos Santos
 www.linkedin.com/in/ricardoaraujosantos371
