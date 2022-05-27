@@ -41,4 +41,4 @@ cd "Nome da pasta"
 
 ## Autor
 Ricardo Araujo dos Santos
-www.linkedin.com/in/ricardoaraujosantos371
+www.linkedin.com/in/ricardoaraujosantos3713
