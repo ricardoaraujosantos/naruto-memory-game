@@ -175,14 +175,13 @@ btnJogar.addEventListener('click', restartGame);
 let lifesHtml = "";
 
 function restartGame() {
+    lifesHtml = "";
+    lifes = 4;
     block= true;
     gameOverHtml.classList.add("z-index");
     winWrapper.classList.add('z-index');
 
-    for (let i = 0; i <= 3; i++) {
-        if(lifes < 1) lifesHtml = "";
-       
-        lifes++;
+    for (let i = 1; i <= 4; i++) { 
         lifesHtml += `
             <div class="life-img">
                 <img class="img-kunai " src="imagens/kunai.png" alt="icone kunai">
