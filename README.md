@@ -1,10 +1,10 @@
-# naruto-memory-game
+## naruto-memory-game
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/ricardoaraujosantos/naruto-memory-game/blob/main/LICENCE)
 
-# Sobre o projeto
+## Sobre o projeto
 
-## Jogar
+### Click no link abaixo para Jogar
 
 https://snazzy-bunny-350545.netlify.app/
 
